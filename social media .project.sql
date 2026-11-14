@@ -83,15 +83,12 @@ FROM social_media_user_behavior
 GROUP BY primary_platform;
 
 USE social_media_db;
-
 CREATE TABLE country_details (
     country VARCHAR(50) PRIMARY KEY,
     continent VARCHAR(30),
-    avg_internet_speed VARCHAR(20),
-    user_id VARCHAR(50),
-    FOREIGN KEY (user_id)
-        REFERENCES social_media_user_behavior(user_id)
+    avg_internet_speed VARCHAR(20)
 );
+
 DESCRIBE social_media_user_behavior;
 USE social_media_db;
 
@@ -106,11 +103,9 @@ INSERT INTO country_details VALUES
 ('India', 'Asia', 'Medium'),
 ('France', 'Europe', 'Very High'),
 ('United States', 'North America', 'Very High'),
-('Egypt', 'Africa', 'Low'); 
+('Egypt', 'Africa', 'Low');
 
 SELECT * FROM country_details;
-
-TRUNCATE TABLE country_details;
 
 SELECT u.user_id, u.country, u.primary_platform, c.continent
 FROM social_media_user_behavior u
